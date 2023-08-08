@@ -24,5 +24,25 @@ const sumZeroNaive = (sortedArr) => {
     }
   }
 };
+console.log(sumZeroNaive([-3, -2, -1, 0, 1, 2, 3])); // [-3, 3]
+console.log(sumZeroNaive([-4, -2, -1, 0, 1, 2, 3])); // undefined
 
-console.log(sumZeroNaive([-3, -2, -1, 0, 1, 2, 3]));
+// REFRACTOR SOLUTION
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+const sumZero = (sortedArray) => {
+  let left = 0;
+  let right = sortedArray.length - 1;
+  while (left < right) {
+    let sum = sortedArray[left] + sortedArray[right];
+    if (sum === 0) {
+      return [sortedArray[left], sortedArray[right]];
+    } else if (sum > 0) {
+      right--;
+    } else {
+      left++;
+    }
+  }
+};
+console.log(sumZero([-7, -5, -3, 0, 4, 5, 6, 10])); // [-5, 5]
+console.log(sumZero([-7, -5, -3, 0, 4, 5, 6, 10])); // undefined
